@@ -13,8 +13,14 @@ public class CharacterController : MonoBehaviour
     public float fuelAmount = 10f;
     public float fuelConsumptionRate = 1;
     public bool grounded;
+    public bool enteredEndgame;
+
     [SerializeField]
     private Image fuelFill;
+   // [SerializeField]
+   // private MeshRenderer fuelRenderer;
+
+
     public GameObject character;
 
     public GameObject[] jetpackFireVFX;
@@ -40,17 +46,19 @@ public class CharacterController : MonoBehaviour
         characterAnimator = character.GetComponent<Animator>();
         dollyCart = gameObject.GetComponent<CinemachineDollyCart>();
         rb = character.GetComponent<Rigidbody>();
+        //fuelRenderer = GetComponent<MeshRenderer>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         characterAnimator.SetBool("grounded", grounded);
         characterAnimator.SetFloat("speed",dollyCart.m_Speed);
         fuelFill.fillAmount = fuelAmount;
+       // fuelRenderer.material.SetFloat("_FillAmount", fuelAmount);
 
         //Zero fuel GAMEOVER
-        if (fuelAmount < 0)
+        if (fuelAmount < 0 && !enteredEndgame)
         {
             OnGameEnded();
         }
@@ -77,7 +85,6 @@ public class CharacterController : MonoBehaviour
             }
         }
     }
-
 
     public void OnGameStart()
     {
