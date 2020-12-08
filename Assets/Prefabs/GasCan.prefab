@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4178564709520998362}
   - component: {fileID: 4611809053816260932}
   - component: {fileID: 3820849144327198107}
-  - component: {fileID: 722301733547765421}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -80,19 +79,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &722301733547765421
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 110973801624842544}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.03181229, y: 0.02440626, z: 0.021438176}
-  m_Center: {x: 0.0008124615, y: 0.00042687278, z: 0.00071910414}
 --- !u!1 &488438559887736325
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,6 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 976323327776154815}
+  - component: {fileID: 8837352126299666312}
   m_Layer: 0
   m_Name: GasCan
   m_TagString: GasCan
@@ -125,6 +112,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8837352126299666312
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488438559887736325}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8433492, y: 2.0315442, z: 1.4703801}
+  m_Center: {x: 0.01190838, y: 0.091652885, z: 0.03487687}
 --- !u!1 &4088997985528057172
 GameObject:
   m_ObjectHideFlags: 0

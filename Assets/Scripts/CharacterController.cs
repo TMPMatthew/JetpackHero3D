@@ -7,35 +7,55 @@ using UnityEngine.Events;
 
 public class CharacterController : MonoBehaviour
 {
-
+    [Header("Character Parametrs")]
+            
     public float runSpeed = 1f;
     public float ascentSpeed = 1f;
     public float fuelAmount = 10f;
     public float fuelConsumptionRate = 1;
+    public int coinsCollected;
+
+    [Space]
+    [Header("Public Bools")]
+
+
     public bool grounded;
     public bool enteredEndgame;
 
+    private bool playerWon;
+
+
+    [Space]
+    [Header("GO's")]
+
+
     [SerializeField]
     private Image fuelFill;
-   // [SerializeField]
-   // private MeshRenderer fuelRenderer;
-
-
-    public GameObject character;
-
-    public GameObject[] jetpackFireVFX;
-    public GameObject[] jetpackNoFuelVFX;
+    [SerializeField]
+    private GameObject character;
+    [SerializeField]
+    private Text coinsCollectedText;
 
     private Animator characterAnimator;
     private Rigidbody rb;
-    private CinemachineDollyCart dollyCart;
+    [HideInInspector]
+    public CinemachineDollyCart dollyCart;
+
+    [Space]
+    [Header("VFX")]
 
 
+    public GameObject[] jetpackFireVFX;
+    public GameObject[] jetpackNoFuelVFX;
+    public GameObject winVFX;
 
+    [Space]
     [Header("Events")]
 
     [SerializeField]
     private UnityEvent OnGameEnd;
+    [SerializeField]
+    private UnityEvent OnPlayerWon;
 
 
 
@@ -54,17 +74,11 @@ public class CharacterController : MonoBehaviour
     {
         characterAnimator.SetBool("grounded", grounded);
         characterAnimator.SetFloat("speed",dollyCart.m_Speed);
+        characterAnimator.SetBool("playerWon", playerWon);
         fuelFill.fillAmount = fuelAmount;
-       // fuelRenderer.material.SetFloat("_FillAmount", fuelAmount);
 
-        //Zero fuel GAMEOVER
-        if (fuelAmount < 0 && !enteredEndgame)
-        {
-            OnGameEnded();
-        }
-
-        //Fly UP
-        if (Input.GetMouseButton(0) && fuelAmount >= 0f)
+        //Fly Up/Descent
+        if (Input.GetMouseButton(0) && fuelAmount >= 0f && !playerWon)
         {
             characterAnimator.SetBool("flying", true);
             rb.velocity = transform.up * ascentSpeed;
@@ -73,6 +87,15 @@ public class CharacterController : MonoBehaviour
             for (int i = 0; i < jetpackFireVFX.Length; i++)
             {
                 jetpackFireVFX[i].SetActive(true);
+                jetpackNoFuelVFX[i].SetActive(false);
+            }
+        }
+        else if (Input.GetMouseButton(0) && fuelAmount <= 0)
+        {
+            for (int i = 0; i < jetpackNoFuelVFX.Length; i++)
+            {
+                jetpackNoFuelVFX[i].SetActive(true);
+                jetpackFireVFX[i].SetActive(false);
             }
         }
         else
@@ -83,6 +106,11 @@ public class CharacterController : MonoBehaviour
             {
                 jetpackFireVFX[i].SetActive(false);
             }
+        }
+
+        if (enteredEndgame && dollyCart.m_Speed <= 0.01f)
+        {
+            PlayerWon();
         }
     }
 
@@ -96,5 +124,13 @@ public class CharacterController : MonoBehaviour
         OnGameEnd.Invoke();   
         dollyCart.m_Speed = 0;
         runSpeed = 0;
+    }
+
+    public void PlayerWon()
+    {
+        OnPlayerWon.Invoke();
+        playerWon = true;
+        winVFX.SetActive(true);
+        coinsCollectedText.text = "You've collected " + coinsCollected.ToString() + " coins";
     }
 }

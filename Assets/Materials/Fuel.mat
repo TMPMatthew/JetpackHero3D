@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Glass
-  m_Shader: {fileID: 4800000, guid: 793bcff4014e141938aa3b2d8f3d9644, type: 3}
+  m_Name: Fuel
+  m_Shader: {fileID: 4800000, guid: 064eb3cb4212f43ae8109962756dee2b, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -60,6 +60,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _FillAmount: -10
     - _Gloss: 1
     - _GlossMapScale: 1
     - _GlossStepFalloff: 1
@@ -70,13 +71,21 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _Rim: 0.0145
+    - _RimPower: 1.37
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
+    - _WobbleX: 0
+    - _WobbleZ: 0
     - _ZWrite: 1
     m_Colors:
     - _AmbientLight: {r: 0.6313726, g: 0.344284, b: 0, a: 1}
     - _Color: {r: 1, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _MainColor: {r: 0.8349056, g: 0.99420714, b: 1, a: 0.2627451}
+    - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
+    - _MainColor: {r: 1, g: 0.52990127, b: 0, a: 0.2627451}
+    - _RimColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Tint: {r: 1, g: 0.5836086, b: 0, a: 1}
+    - _TopColor: {r: 1, g: 1, b: 1, a: 1}
