@@ -771,6 +771,7 @@ MonoBehaviour:
   gascanCollectVFX: {fileID: 5081455276104509880, guid: 9f666e5bcec054b12bf08e60e22cdda9,
     type: 3}
   coinCollectVFX: {fileID: 143964, guid: 09d9de58ef3bf5444ac94afa0e6013cb, type: 3}
+  characterEnteredMultiplier: 0
 --- !u!1 &3889711108548219265
 GameObject:
   m_ObjectHideFlags: 0

@@ -74,6 +74,7 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _Outline: 0.119
     - _Parallax: 0.005
     - _Shininess: 0.01
     - _SmoothnessTextureChannel: 0
@@ -86,4 +87,5 @@ Material:
     - _Color: {r: 1, g: 0.049382716, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _MainColor: {r: 0.6415094, g: 0.23427618, b: 0, a: 1}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}

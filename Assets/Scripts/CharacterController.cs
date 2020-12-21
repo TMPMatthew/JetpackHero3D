@@ -35,7 +35,6 @@ public class CharacterController : MonoBehaviour
     private GameObject character;
     [SerializeField]
     private Text coinsCollectedText;
-
     private Animator characterAnimator;
     private Rigidbody rb;
     [HideInInspector]
@@ -66,6 +65,7 @@ public class CharacterController : MonoBehaviour
         characterAnimator = character.GetComponent<Animator>();
         dollyCart = gameObject.GetComponent<CinemachineDollyCart>();
         rb = character.GetComponent<Rigidbody>();
+        
         //fuelRenderer = GetComponent<MeshRenderer>();
     }
 
@@ -77,12 +77,14 @@ public class CharacterController : MonoBehaviour
         characterAnimator.SetBool("playerWon", playerWon);
         fuelFill.fillAmount = fuelAmount;
 
+
         //Fly Up/Descent
         if (Input.GetMouseButton(0) && fuelAmount >= 0f && !playerWon)
         {
             characterAnimator.SetBool("flying", true);
             rb.velocity = transform.up * ascentSpeed;
             fuelAmount -= fuelConsumptionRate * Time.deltaTime;
+
 
             for (int i = 0; i < jetpackFireVFX.Length; i++)
             {
@@ -92,6 +94,7 @@ public class CharacterController : MonoBehaviour
         }
         else if (Input.GetMouseButton(0) && fuelAmount <= 0)
         {
+
             for (int i = 0; i < jetpackNoFuelVFX.Length; i++)
             {
                 jetpackNoFuelVFX[i].SetActive(true);
